@@ -67,7 +67,7 @@
                     console.log('Search results:', movies);
 
                     for (const [title, data] of Object.entries(movies)) {
-                        $('#search-results div').append(`<div class="card"><img src="${data.img}" style="width: 25%"></img><div class="container"><h4><b><a href="https://vidsrc.me/embed/${data.id}" target="_blank">${title}</a></b></h4><p><a href="https://www.imdb.com/title/${id}/">IMDb Page</a></p></div></div>`);
+                        $('#search-results div').append(`<div class="card"><img src="${data.img}" style="width: 25%"></img><div class="container"><h4><b><a href="https://vidsrc.me/embed/${data.id}" target="_blank">${title}</a></b></h4><p><a href="https://www.imdb.com/title/${data.id}/">IMDb Page</a></p></div></div>`);
                     }
                     $('#search-results').show();
                 } else {

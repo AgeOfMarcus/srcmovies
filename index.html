@@ -48,10 +48,15 @@
             url: "https://wrapapi.com/use/mjwrap/imdb_api/search/0.0.3",
             method: "POST",
             data: {
-                "wrapAPIKey": "NSvn6Ovvb7ASdNKOUW0EnT9jlfhnmG8x"
+                "wrapAPIKey": "NSvn6Ovvb7ASdNKOUW0EnT9jlfhnmG8x",
+                "title": query
             }
             }).done(function(data) {
-                console.log(data);
+                if (data.success) {
+                    console.log(data);
+                } else {
+                    console.error('Error searching imdb', data.messages);
+                }
             });
         }
 

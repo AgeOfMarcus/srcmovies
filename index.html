@@ -56,6 +56,7 @@
             }
             }).done(function(data) {
                 if (data.success) {
+                    console.log('Data:', data.data)
                     const movies = {};
                     data.data.output.forEach((title, i) => {
                         movies[title] = data.data.output2[i].split('/')[2];

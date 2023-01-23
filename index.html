@@ -25,14 +25,13 @@
         }
     </style>
     <!-- Amen -->
-    <script type="module" src="/assets/index.js"></script>
 </head>
 <body>
 
     <script src='https://analytics.marcusj.tech/analytics.js' defer></script>
 
     <h1>Movies</h1>
-    <input id='s' placeholder="Search movies..."><md-icon-button onclick="doSearch(document.getElementById('s').value)">🔍</md-item-button>
+    <input id='s' placeholder="Search movies..."><button onclick="doSearch(document.getElementById('s').value)">🔍</button>
     <hr>
 
     <div id="search-results" style="display: none">

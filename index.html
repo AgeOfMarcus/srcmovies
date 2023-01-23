@@ -33,6 +33,10 @@
     <h1>Movies</h1>
     <input id='s' placeholder="Search movies..."><button onclick="doSearch(document.getElementById('s').value)">🔍</button>
     <hr>
+    <h2>View from IMDb ID (from URL)</h2>
+    <input id='i' placeholder="tt..."><button onclick="window.location.href='https://vidsrc.me/embed/'+document.getElementById('i').value">Go</button>
+    <hr>
+
 
     <div id="search-results" style="display: none">
         <h2>Search Results</h2>

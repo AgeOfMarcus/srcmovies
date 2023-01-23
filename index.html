@@ -37,15 +37,18 @@
     <div id="search-results" style="display: none">
         <h2>Search Results</h2>
 
-
+        <p></p>
     </div>
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script>
 
         function doSearch(query) {
+            $('#search-results').hide();
+            $('#search-results p').html('');
+
             $.ajax({
-            url: "https://wrapapi.com/use/mjwrap/imdb_api/search/0.0.3",
+            url: "https://wrapapi.com/use/mjwrap/imdb/search/0.0.1",
             method: "POST",
             data: {
                 "wrapAPIKey": "NSvn6Ovvb7ASdNKOUW0EnT9jlfhnmG8x",
@@ -53,7 +56,16 @@
             }
             }).done(function(data) {
                 if (data.success) {
-                    console.log(data);
+                    const movies = {};
+                    data.data.output.forEach((title, i) => {
+                        movies[title] = data.data.output2[i].split('/')[2];
+                    });
+                    console.log('Search results:', movies);
+
+                    for (const [title, id] of Object.entries(movies)) {
+                        $('#search-results p').append(`<a href="https://vidsrc.me/embed/${id}" target="_blank">${title}</a><br>`);
+                    }
+                    $('#search-results').show();
                 } else {
                     console.error('Error searching imdb', data.messages);
                 }

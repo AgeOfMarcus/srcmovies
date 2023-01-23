@@ -37,7 +37,7 @@
     <div id="search-results" style="display: none">
         <h2>Search Results</h2>
 
-        <div class="container"></div>
+        <div></div>
     </div>
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -67,7 +67,7 @@
                     console.log('Search results:', movies);
 
                     for (const [title, data] of Object.entries(movies)) {
-                        $('#search-results div').append(`<card><img src="${data.img}"><a href="https://vidsrc.me/embed/${data.id}" target="_blank">${title}</a></img></card>`);
+                        $('#search-results div').append(`<div class="card"><img src="${data.img}" style="width: 100%"></img><div class="container"><h4><b><a href="https://vidsrc.me/embed/${data.id}" target="_blank">${title}</a></b></h4></div></div>`);
                     }
                     $('#search-results').show();
                 } else {

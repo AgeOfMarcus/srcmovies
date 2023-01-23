@@ -37,7 +37,7 @@
     <div id="search-results" style="display: none">
         <h2>Search Results</h2>
 
-        <p></p>
+        <div class="container"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -45,10 +45,10 @@
 
         function doSearch(query) {
             $('#search-results').hide();
-            $('#search-results p').html('');
+            $('#search-results div').html('');
 
             $.ajax({
-            url: "https://wrapapi.com/use/mjwrap/imdb/search/0.0.1",
+            url: "https://wrapapi.com/use/mjwrap/imdb/search/0.0.2",
             method: "POST",
             data: {
                 "wrapAPIKey": "NSvn6Ovvb7ASdNKOUW0EnT9jlfhnmG8x",
@@ -58,13 +58,16 @@
                 if (data.success) {
                     console.log('Data:', data.data)
                     const movies = {};
-                    data.data.output.forEach((title, i) => {
-                        movies[title] = data.data.output2[i].split('/')[2];
+                    data.data.titles.forEach((title, i) => {
+                        movies[title] = {
+                            'id': data.data.links[i].href.split('/')[2],
+                            'img': data.data.images[i]
+                        };
                     });
                     console.log('Search results:', movies);
 
-                    for (const [title, id] of Object.entries(movies)) {
-                        $('#search-results p').append(`<a href="https://vidsrc.me/embed/${id}" target="_blank">${title}</a><br>`);
+                    for (const [title, data] of Object.entries(movies)) {
+                        $('#search-results div').append(`<card><img src="${data.img}"><a href="https://vidsrc.me/embed/${data.id}" target="_blank">${title}</a></img></card>`);
                     }
                     $('#search-results').show();
                 } else {
